@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1>JOBS</h1>
-     ("{{jobs}} company name {{company_name}} and title{{job_title}}");
+     ("{{jobs}}"); 
 
-    
+    </ul>
   
   </body>
 </html>

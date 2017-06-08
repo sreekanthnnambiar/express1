@@ -38,11 +38,13 @@ router.get('/',function(req,res){
     if(!errr)
     {
       console.log(resultt);
+      //var sampleData = JSON.stringify(resultt);
      // console.log("selected all companiess"+resultt);
       res.render('index',{
         jobs:resultt.rows
-      })
+      });
     }
+
     else
     {
       console.log("error occured")
