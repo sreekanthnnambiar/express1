@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>JOBS</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='new.css'/>
+  </head>
+  <body>
+    <h1>JOBS</h1>
+
+   {{#jobs}}
+
+    company name is  {{company_name}}<br>
+      
+
+   {{/jobs}} 
+
+    </ul>
+  
+  </body>
+</html>

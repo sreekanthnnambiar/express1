@@ -37,7 +37,7 @@ router.get('/',function(req,res){
   client.execute("select * from demo.company",[],function(errr,resultt){
     if(!errr)
     {
-      console.log(resultt);
+      //console.log(resultt);
       //var sampleData = JSON.stringify(resultt);
      // console.log("selected all companiess"+resultt);
       res.render('index',{
