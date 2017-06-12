@@ -5,9 +5,10 @@
     <title>JOB DETAILS</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-   <!-- <link rel="stylesheet" type="text/css" href="/public/css/style1.css" /> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/style1.css" />
+    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
   
 </head>
 <body>
@@ -35,6 +36,7 @@
                         <th class="hidden-xs">ID</th>
                         <th>Company Name</th>
                         <th>Job Title</th>
+                        <th>Job Location</th>
                     </tr> 
                   </thead>
                   <tbody>
@@ -42,6 +44,7 @@
                             <td class="hidden-xs">{{id}}</td>
                             <td>{{company_name}}</td>
                             <td>{{job_title}}</td>
+                            <td>{{job_location}}</td>
                           </tr {{/jobs}}>
                         </tbody>
                 </table>
@@ -70,7 +73,40 @@
 
 </div></div></div>
 
-   
+
+
+
+
+  <h1>Job Vacancy Statistics</h1>
+
+   <svg id="chart" width="2500" height="3000"></svg>
+
+        <script>
+
+        var data = [
+        {{#items}}
+            { place: '{{place}}', openings: {{openings}} }, 
+
+        {{/items}} ]
+
+var g = d3.select('#chart')
+  .selectAll("g")
+  .data(data)
+  .enter()
+  .append('g')
+  .attr("transform", "translate(50,5)");
+g.append("rect")
+  .attr('x', 40)
+  .attr('y', ( d, i)=> (i+1) * 100)
+  .attr('width', (d)=> d.openings*50)
+  .attr('height',30)
+g.append("text")
+  .attr('x', 50)
+  .attr('y', (d, i)=> (i+1) * 100)
+  .text((d)=> d.place)
+
+        </script>
+
     
     
 </body>
