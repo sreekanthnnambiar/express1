@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 
 var index = require('./routes/index');
-//var users = require('./routes/users');
+var bar = require('./routes/bar');
 
 console.log("sreekanth running");
 
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(__dirname + '/public'));
 
 app.use('/', index);
-//app.use('/users', users);
+app.use('/bar', bar);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

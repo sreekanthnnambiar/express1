@@ -77,37 +77,5 @@
 
 
 
-  <h1>Job Vacancy Statistics</h1>
-
-   <svg id="chart" width="2500" height="3000"></svg>
-
-        <script>
-
-        var data = [
-        {{#items}}
-            { place: '{{place}}', openings: {{openings}} }, 
-
-        {{/items}} ]
-
-var g = d3.select('#chart')
-  .selectAll("g")
-  .data(data)
-  .enter()
-  .append('g')
-  .attr("transform", "translate(50,5)");
-g.append("rect")
-  .attr('x', 40)
-  .attr('y', ( d, i)=> (i+1) * 100)
-  .attr('width', (d)=> d.openings*50)
-  .attr('height',30)
-g.append("text")
-  .attr('x', 50)
-  .attr('y', (d, i)=> (i+1) * 100)
-  .text((d)=> d.place)
-
-        </script>
-
-    
-    
-</body>
+  
 </html>

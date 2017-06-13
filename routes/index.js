@@ -296,10 +296,6 @@ for(var i=0;i<stateAbbr.length;i++)
 
 //readJson();
 
-
-
-router.get('/',function(req,res){
-
   client.execute("select * from demo.company2",[],function(errr,resultt){
     if(!errr)
     {
@@ -336,10 +332,20 @@ router.get('/',function(req,res){
 
 
 
-      
+      router.get('/',function(req,res){
       res.render('index',{
-        jobs:resultt.rows,items:jobdatas_us
+        jobs:resultt.rows
+            });
       });
+
+      router.get('/bar', function(req, res) {
+                res.render('bar',{items:jobdatas_us});
+            });
+
+     router.get('/map', function(req, res) {
+                res.render('map',{items:jobdatas_us});
+            });
+
     }
 
     else
@@ -349,7 +355,7 @@ router.get('/',function(req,res){
   
 });
 
-});
+
 
 function countItems(array_elements)
 {
@@ -376,12 +382,11 @@ function countItems(array_elements)
     }
     number++;
     }
-    //console.log(stateOccurenceJson);
+    console.log(stateOccurenceJson);
 
     return stateOccurenceJson;
     
 }
-
 
 
 module.exports = router;
