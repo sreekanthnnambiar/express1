@@ -346,6 +346,10 @@ for(var i=0;i<stateAbbr.length;i++)
                 res.render('map',{items:jobdatas_us});
             });
 
+     router.get('/circle', function(req, res) {
+                res.render('circle',{items:jobdatas_us});
+            });       
+
     }
 
     else
