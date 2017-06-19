@@ -300,7 +300,7 @@ for(var i=0;i<stateAbbr.length;i++)
     if(!errr)
     {
       var rowlength=resultt.rows.length;
-      //console.log(resultt);
+      console.log(resultt);
       //var sampleData = JSON.stringify(resultt);
       for(var i=0;i<rowlength;i++)
       {
@@ -345,6 +345,26 @@ for(var i=0;i<stateAbbr.length;i++)
      router.get('/map', function(req, res) {
                 res.render('map',{items:jobdatas_us});
             });
+
+     router.get('/api/job/:id*', function(req, res) {
+
+         var cassandra = require('cassandra-driver');
+		var client = new cassandra.Client({contactPoints: ['127.0.0.1:9042'], keyspace: 'demo'});
+        var id= req.param('id');
+		var query="select * from demo.company2 where state='"+id+"' ALLOW FILTERING";
+		client.execute(query,function(err,result){
+    	if(!err)
+    	{
+            res.json(result);
+     
+    	}
+    	else
+    	{
+      	console.log("there is nothing to display");
+    	}
+  		})
+                //res.render('map',{items:jobdatas_us});
+            });       
 
      router.get('/circle', function(req, res) {
                 res.render('circle',{items:jobdatas_us});
